@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maths pour ingénieur – Fiches de révision</title>
+<meta name="description" content="Seize fiches de révision de maths (spécialité et maths expertes) pour préparer un cycle ingénieur informatique, avec recherche, suivi de progression et cartes de révision.">
+<script>try{var t=JSON.parse(localStorage.getItem('mr:theme'));if(t){document.documentElement.setAttribute('data-theme',t)}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/common.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html">Maths <b>pour ingénieur</b></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html" aria-current="page">Fiches</a>
+      <a href="revision.html">Cartes</a>
+    </nav>
+    <button type="button" class="theme-btn" id="theme">Mode sombre</button>
+  </div>
+</header>
+
+<div class="layout">
+  <details class="side" open>
+    <summary>Sommaire</summary>
+    <nav aria-label="Sommaire des fiches">
+      <div class="side-g">
+        <p class="side-t">Algèbre et analyse</p>
+        <ul>
+          <li><a href="#second-degre">Second degré</a></li>
+          <li><a href="#suites">Suites</a></li>
+          <li><a href="#limites">Limites et continuité</a></li>
+          <li><a href="#derivation">Dérivation et convexité</a></li>
+          <li><a href="#exp-ln">Exponentielle et logarithme népérien</a></li>
+          <li><a href="#trigo">Trigonométrie</a></li>
+          <li><a href="#primitives">Primitives et équations différentielles</a></li>
+          <li><a href="#integrales">Calcul intégral</a></li>
+        </ul>
+      </div>
+      <div class="side-g">
+        <p class="side-t">Géométrie</p>
+        <ul>
+          <li><a href="#plan">Produit scalaire et géométrie repérée dans le plan</a></li>
+          <li><a href="#espace">Géométrie dans l'espace</a></li>
+        </ul>
+      </div>
+      <div class="side-g">
+        <p class="side-t">Dénombrement et probabilités</p>
+        <ul>
+          <li><a href="#denombrement">Combinatoire et dénombrement</a></li>
+          <li><a href="#conditionnelles">Probabilités conditionnelles et indépendance</a></li>
+          <li><a href="#binomiale">Variables aléatoires, loi binomiale, concentration</a></li>
+        </ul>
+      </div>
+      <div class="side-g">
+        <p class="side-t">Extension : maths expertes</p>
+        <ul>
+          <li><a href="#complexes">Nombres complexes</a></li>
+          <li><a href="#matrices">Matrices et graphes</a></li>
+          <li><a href="#arithmetique">Divisibilité, congruences, PGCD</a></li>
+        </ul>
+      </div>
+    </nav>
+  </details>
+
+  <main id="contenu">
+    <p class="eyebrow">Du BTS SIO au cycle ingénieur</p>
+    <h1>Fiches de révision de maths</h1>
+    <p class="lead">Seize fiches construites sur le plan des cours de spécialité de Yvan Monka (Première et Terminale), dont trois chapitres de maths expertes qui servent beaucoup en informatique. Chaque fiche résume les formules à connaître et les réflexes de calcul, puis renvoie vers le cours complet, les vidéos et les exercices corrigés du site de Yvan Monka.</p>
+
+    <div class="order">
+      <h2>Ordre de révision conseillé</h2>
+      <ol>
+        <li><b>Analyse</b> : dérivation, exponentielle et logarithme, limites, intégrales. Ces outils reviennent dans presque tous les cours scientifiques.</li>
+        <li><b>Dénombrement et probabilités</b> : très présents en informatique (complexité, algorithmique, statistiques).</li>
+        <li><b>Complexes, matrices, arithmétique</b> : souvent nouveaux si tu n'as pas pris maths expertes, et directement liés à l'informatique (graphes, cryptographie).</li>
+      </ol>
+    </div>
+
+    <div class="res">
+      <a class="btn" href="revision.html">Passer aux cartes de révision</a>
+      <a class="btn" href="https://www.maths-et-tiques.fr/telech/FormTSPE.pdf" target="_blank" rel="noopener">Formulaire de Terminale spé (7 pages)</a>
+      <a class="btn" href="https://www.youtube.com/playlist?list=PLVUDmbpupCaq2sMQrVs8pPJgutIBYwwLz" target="_blank" rel="noopener">Playlist post-bac (29 vidéos)</a>
+    </div>
+
+    <div class="tools">
+      <div class="search">
+        <label class="sr" for="q">Rechercher dans les fiches</label>
+        <input id="q" type="search" placeholder="Rechercher une formule ou un mot (Fermat, binôme, tangente…)" autocomplete="off">
+        <span class="hint" aria-hidden="true">/</span>
+      </div>
+      <div class="chips" role="group" aria-label="Filtrer par niveau">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">Toutes</button>
+        <button type="button" class="chip" data-filter="premiere" aria-pressed="false">Première</button>
+        <button type="button" class="chip" data-filter="terminale" aria-pressed="false">Terminale</button>
+        <button type="button" class="chip" data-filter="expertes" aria-pressed="false">Expertes</button>
+        <button type="button" class="chip" data-filter="todo" aria-pressed="false">À revoir</button>
+      </div>
+      <div class="prog">
+        <div class="prog-txt"><span id="prog-txt">0 / 16 fiches maîtrisées</span><span id="count" aria-live="polite"></span></div>
+        <div class="bar" role="presentation"><i id="bar-fill"></i></div>
+      </div>
+    </div>
+
+<!-- ===================== ALGÈBRE ET ANALYSE ===================== -->
+  <section class="group">
+    <h2>Algèbre et analyse</h2>
+    <p>Le socle : à connaître sans hésiter, parce que tout le reste s'appuie dessus.</p>
+
+    <article class="fiche" id="second-degre">
+      <header><h3>Second degré</h3><span class="lvl">Première</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Discriminant</span><span class="m">Δ = b² − 4ac</span></li>
+            <li><span class="lbl">Racines</span><span class="m">Δ &gt; 0 : x = (−b ± √Δ) / 2a &nbsp;·&nbsp; Δ = 0 : x = −b / 2a &nbsp;·&nbsp; Δ &lt; 0 : aucune racine réelle</span></li>
+            <li><span class="lbl">Forme canonique</span><span class="m">a(x − α)² + β avec α = −b / 2a et β = f(α)</span></li>
+            <li><span class="lbl">Factorisation</span><span class="m">a(x − x₁)(x − x₂)</span></li>
+            <li><span class="lbl">Somme, produit</span><span class="m">x₁ + x₂ = −b / a &nbsp;·&nbsp; x₁x₂ = c / a</span></li>
+            <li><span class="lbl">Signe du trinôme</span><span class="m">signe de a à l'extérieur des racines, signe de −a entre elles</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Une racine « évidente » (0, 1, −1) donne tout de suite l'autre avec la somme ou le produit.</li>
+            <li>Le sommet de la parabole est (α ; β) : c'est l'extremum de la fonction.</li>
+            <li>Une équation de degré 4 en x⁴ ou en eˣ se ramène au second degré par changement d'inconnue.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/19SecdegP1M.pdf" target="_blank" rel="noopener">Chapitre 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/19SecdegP2M.pdf" target="_blank" rel="noopener">Chapitre 2 (PDF)</a>
+        <a href="https://youtu.be/tc9wvbYuZts" target="_blank" rel="noopener">Équations (vidéo)</a>
+        <a href="https://youtu.be/WVYWdN13kPE" target="_blank" rel="noopener">Fonctions (vidéo)</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="suites">
+      <header><h3>Suites</h3><span class="lvl">Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Arithmétique, raison r</span><span class="m">uₙ₊₁ = uₙ + r &nbsp;·&nbsp; uₙ = u₀ + n·r</span></li>
+            <li><span class="lbl">Géométrique, raison q</span><span class="m">uₙ₊₁ = q·uₙ &nbsp;·&nbsp; uₙ = u₀·qⁿ</span></li>
+            <li><span class="lbl">Somme arithmétique</span><span class="m">u₀ + … + uₙ = (n + 1)(u₀ + uₙ) / 2</span></li>
+            <li><span class="lbl">Somme géométrique (q ≠ 1)</span><span class="m">1 + q + … + qⁿ = (1 − q<sup>n+1</sup>) / (1 − q)</span></li>
+            <li><span class="lbl">Limite de qⁿ</span><span class="m">q &gt; 1 : +∞ &nbsp;·&nbsp; −1 &lt; q &lt; 1 : 0 &nbsp;·&nbsp; q ≤ −1 : pas de limite</span></li>
+            <li><span class="lbl">Arithmético-géométrique</span><span class="m">uₙ₊₁ = a·uₙ + b (a ≠ 1) : on pose ℓ = b / (1 − a), alors vₙ = uₙ − ℓ est géométrique de raison a</span></li>
+            <li><span class="lbl">Convergence monotone</span><span class="m">croissante et majorée ⇒ convergente</span></li>
+            <li><span class="lbl">Bernoulli</span><span class="m">(1 + a)ⁿ ≥ 1 + na pour a ≥ 0</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Récurrence : initialisation, hérédité (on suppose P(n), on prouve P(n+1)), conclusion écrite.</li>
+            <li>Forme indéterminée : factoriser par le terme dominant (n², qⁿ…).</li>
+            <li>Une suite avec sin n ou (−1)ⁿ : penser à l'encadrement ou à la comparaison.</li>
+            <li>Seuil : on le trouve avec une boucle <code>while</code>, ou avec ln si la suite est géométrique.</li>
+          </ul>
+        </section>
+      </div>
+<pre>def seuil(M):
+    n, u = 0, 1.0
+    while u &lt; M:
+        u = 1.5 * u      # uₙ₊₁ = 1,5 · uₙ
+        n += 1
+    return n             # plus petit n tel que uₙ ≥ M</pre>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20SuitesTS1.pdf" target="_blank" rel="noopener">Chapitre 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20SuitesTS2.pdf" target="_blank" rel="noopener">Chapitre 2 (PDF)</a>
+        <a href="https://youtu.be/MJv7_pkFcdA" target="_blank" rel="noopener">Cours (vidéo)</a>
+        <a href="https://youtu.be/udGGlHdSAgc" target="_blank" rel="noopener">Méthode : récurrence</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="limites">
+      <header><h3>Limites et continuité</h3><span class="lvl">Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Polynôme en ±∞</span><span class="m">même limite que son terme de plus haut degré</span></li>
+            <li><span class="lbl">Fraction rationnelle en ±∞</span><span class="m">même limite que le rapport des termes de plus haut degré</span></li>
+            <li><span class="lbl">Croissances comparées</span><span class="m">eˣ / xⁿ → +∞ &nbsp;·&nbsp; ln x / xⁿ → 0 (en +∞) &nbsp;·&nbsp; xⁿeˣ → 0 (en −∞) &nbsp;·&nbsp; x ln x → 0 (en 0⁺)</span></li>
+            <li><span class="lbl">Asymptotes</span><span class="m">lim f = ℓ en ±∞ ⇒ y = ℓ &nbsp;·&nbsp; lim f = ±∞ en a ⇒ x = a</span></li>
+            <li><span class="lbl">Composition</span><span class="m">lim<sub>x→a</sub> u(x) = b et lim<sub>X→b</sub> f(X) = c ⇒ lim<sub>x→a</sub> f(u(x)) = c</span></li>
+            <li><span class="lbl">Théorème des valeurs intermédiaires</span><span class="m">f continue sur [a ; b], k entre f(a) et f(b) ⇒ f(x) = k a au moins une solution ; une seule si f est strictement monotone</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Quatre formes indéterminées : ∞ − ∞, 0 × ∞, ∞ / ∞, 0 / 0. On transforme l'écriture (factoriser, conjugué).</li>
+            <li>Dérivable ⇒ continue, mais pas l'inverse (|x| en 0).</li>
+            <li>Dans un tableau de variations, noter les limites aux bornes.</li>
+            <li>La dichotomie encadre une solution : un algorithme classique à savoir écrire en Python.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20LimitesFct1.pdf" target="_blank" rel="noopener">Limites 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20LimitesFct2.pdf" target="_blank" rel="noopener">Limites 2 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20Cont.pdf" target="_blank" rel="noopener">Continuité (PDF)</a>
+        <a href="https://youtu.be/YPwJyYDsmxM" target="_blank" rel="noopener">Limites (vidéo)</a>
+        <a href="https://youtu.be/9SSEUoyHh2s" target="_blank" rel="noopener">Continuité (vidéo)</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="derivation">
+      <header><h3>Dérivation et convexité</h3><span class="lvl">Première · Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Fonctions usuelles</span><span class="m">(xⁿ)′ = n·x<sup>n−1</sup> &nbsp;·&nbsp; (1/x)′ = −1/x² &nbsp;·&nbsp; (√x)′ = 1 / 2√x &nbsp;·&nbsp; (eˣ)′ = eˣ &nbsp;·&nbsp; (ln x)′ = 1/x &nbsp;·&nbsp; sin′ = cos &nbsp;·&nbsp; cos′ = −sin</span></li>
+            <li><span class="lbl">Produit, quotient</span><span class="m">(uv)′ = u′v + uv′ &nbsp;·&nbsp; (u/v)′ = (u′v − uv′) / v²</span></li>
+            <li><span class="lbl">Composées</span><span class="m">(uⁿ)′ = n·u′·u<sup>n−1</sup> &nbsp;·&nbsp; (e<sup>u</sup>)′ = u′·e<sup>u</sup> &nbsp;·&nbsp; (ln u)′ = u′ / u &nbsp;·&nbsp; (√u)′ = u′ / 2√u</span></li>
+            <li><span class="lbl">Cas affine</span><span class="m">[f(ax + b)]′ = a·f′(ax + b)</span></li>
+            <li><span class="lbl">Tangente en a</span><span class="m">y = f′(a)(x − a) + f(a)</span></li>
+            <li><span class="lbl">Convexité</span><span class="m">f″ ≥ 0 : convexe (courbe au-dessus de ses tangentes) &nbsp;·&nbsp; f″ ≤ 0 : concave &nbsp;·&nbsp; inflexion si f″ s'annule en changeant de signe</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Signe de f′ ⇒ variations. Factoriser f′ pour lire son signe.</li>
+            <li>eˣ est toujours strictement positif : le signe de f′ vient de l'autre facteur.</li>
+            <li>Une inégalité du type eˣ ≥ 1 + x se prouve par la convexité (position par rapport à la tangente).</li>
+            <li>Un extremum local se cherche là où f′ s'annule <em>et</em> change de signe.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20DerivT.pdf" target="_blank" rel="noopener">Dérivation (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20ConvexiteT.pdf" target="_blank" rel="noopener">Convexité (PDF)</a>
+        <a href="https://youtu.be/XAgdHblbajE" target="_blank" rel="noopener">Dérivation (vidéo)</a>
+        <a href="https://youtu.be/gge4xdn6cFA" target="_blank" rel="noopener">Convexité (vidéo)</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="exp-ln">
+      <header><h3>Exponentielle et logarithme népérien</h3><span class="lvl">Première · Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Exponentielle</span><span class="m">e<sup>a+b</sup> = eᵃ·eᵇ &nbsp;·&nbsp; e<sup>−a</sup> = 1 / eᵃ &nbsp;·&nbsp; (eᵃ)ⁿ = e<sup>na</sup> &nbsp;·&nbsp; eˣ &gt; 0</span></li>
+            <li><span class="lbl">Résolution</span><span class="m">eˣ = k ⇔ x = ln k (k &gt; 0) &nbsp;·&nbsp; eˣ ≤ k ⇔ x ≤ ln k</span></li>
+            <li><span class="lbl">Logarithme</span><span class="m">ln(ab) = ln a + ln b &nbsp;·&nbsp; ln(a/b) = ln a − ln b &nbsp;·&nbsp; ln(aⁿ) = n·ln a</span></li>
+            <li><span class="lbl">Réciproques</span><span class="m">ln(eˣ) = x &nbsp;·&nbsp; e<sup>ln x</sup> = x (x &gt; 0) &nbsp;·&nbsp; ln 1 = 0 &nbsp;·&nbsp; ln e = 1</span></li>
+            <li><span class="lbl">Inégalités</span><span class="m">eˣ ≥ 1 + x &nbsp;·&nbsp; ln x ≤ x − 1</span></li>
+            <li><span class="lbl">Seuil géométrique</span><span class="m">qⁿ ≥ M ⇔ n ≥ ln M / ln q si q &gt; 1</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>ln n'est défini que pour un argument strictement positif : vérifier le domaine avant de l'écrire.</li>
+            <li>ln(a + b) n'est pas ln a + ln b.</li>
+            <li>Passer au ln dans une inéquation garde le sens (ln est croissante).</li>
+            <li>Si 0 &lt; q &lt; 1, ln q est négatif : le sens s'inverse en divisant par ln q.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/19ExpoPM.pdf" target="_blank" rel="noopener">Exponentielle (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20LogT1.pdf" target="_blank" rel="noopener">Logarithme 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20LogT2.pdf" target="_blank" rel="noopener">Logarithme 2 (PDF)</a>
+        <a href="https://youtu.be/sCcy4IQKits" target="_blank" rel="noopener">Exponentielle (vidéo)</a>
+        <a href="https://youtu.be/VJns0RfVWGg" target="_blank" rel="noopener">Logarithme (vidéo)</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="trigo">
+      <header><h3>Trigonométrie</h3><span class="lvl">Première · Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Relation fondamentale</span><span class="m">cos²x + sin²x = 1 &nbsp;·&nbsp; 180° = π rad</span></li>
+            <li><span class="lbl">Parité, période</span><span class="m">cos paire, sin impaire, toutes deux 2π-périodiques</span></li>
+            <li><span class="lbl">Angles liés</span><span class="m">cos(π − x) = −cos x &nbsp;·&nbsp; sin(π − x) = sin x &nbsp;·&nbsp; cos(π/2 − x) = sin x</span></li>
+            <li><span class="lbl">Équation cos x = cos a</span><span class="m">x = a + 2kπ ou x = −a + 2kπ</span></li>
+            <li><span class="lbl">Équation sin x = sin a</span><span class="m">x = a + 2kπ ou x = π − a + 2kπ</span></li>
+            <li><span class="lbl">Addition (vu en expertes)</span><span class="m">cos(a + b) = cos a cos b − sin a sin b &nbsp;·&nbsp; sin(a + b) = sin a cos b + cos a sin b</span></li>
+            <li><span class="lbl">Duplication</span><span class="m">cos 2a = 2cos²a − 1 = 1 − 2sin²a &nbsp;·&nbsp; sin 2a = 2 sin a cos a</span></li>
+          </ul>
+          <div class="tbl">
+            <table>
+              <tr><th>x</th><th>0</th><th>π/6</th><th>π/4</th><th>π/3</th><th>π/2</th></tr>
+              <tr><th>cos x</th><td>1</td><td>√3/2</td><td>√2/2</td><td>1/2</td><td>0</td></tr>
+              <tr><th>sin x</th><td>0</td><td>1/2</td><td>√2/2</td><td>√3/2</td><td>1</td></tr>
+            </table>
+          </div>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Les équations trigonométriques donnent une famille de solutions : toujours préciser « k ∈ ℤ », puis garder celles de l'intervalle demandé.</li>
+            <li>Pour une limite avec sin ou cos, l'encadrement −1 ≤ sin x ≤ 1 est le premier réflexe.</li>
+            <li>Étudier la parité et la période d'abord réduit l'intervalle d'étude.</li>
+            <li>Les formules d'addition et de duplication resservent avec les complexes (linéarisation).</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/19TrigoP1M.pdf" target="_blank" rel="noopener">Trigo 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/19TrigoP2M.pdf" target="_blank" rel="noopener">Trigo 2 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20TrigoT.pdf" target="_blank" rel="noopener">Fonctions trigo (PDF)</a>
+        <a href="https://youtu.be/wJjb3CSS3cg" target="_blank" rel="noopener">Cours (vidéo)</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="primitives">
+      <header><h3>Primitives et équations différentielles</h3><span class="lvl">Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Primitives usuelles</span><span class="m">xⁿ → x<sup>n+1</sup> / (n+1) (n ≠ −1) &nbsp;·&nbsp; 1/x² → −1/x &nbsp;·&nbsp; 1/√x → 2√x &nbsp;·&nbsp; 1/x → ln x (x &gt; 0) &nbsp;·&nbsp; eˣ → eˣ &nbsp;·&nbsp; cos → sin &nbsp;·&nbsp; sin → −cos</span></li>
+            <li><span class="lbl">Formes composées</span><span class="m">u′uⁿ → u<sup>n+1</sup> / (n+1) &nbsp;·&nbsp; u′ / u → ln|u| &nbsp;·&nbsp; u′e<sup>u</sup> → e<sup>u</sup> &nbsp;·&nbsp; u′ / √u → 2√u</span></li>
+            <li><span class="lbl">Unicité</span><span class="m">deux primitives d'une même fonction diffèrent d'une constante</span></li>
+            <li><span class="lbl">y′ = ay</span><span class="m">y(x) = C·e<sup>ax</sup> ; avec y(x₀) = y₀ : C = y₀·e<sup>−ax₀</sup></span></li>
+            <li><span class="lbl">y′ = ay + b (a ≠ 0)</span><span class="m">y(x) = C·e<sup>ax</sup> − b / a</span></li>
+            <li><span class="lbl">y′ = ay + f</span><span class="m">solution générale = une solution particulière + C·e<sup>ax</sup></span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Reconnaître la forme u′ × f(u) avant de chercher plus compliqué.</li>
+            <li>Vérifier une primitive en la dérivant : c'est rapide et sûr.</li>
+            <li>Une équation différentielle modélise une évolution (décroissance, refroidissement, charge d'un condensateur) : la constante C vient de la condition initiale.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20Prim-EdT.pdf" target="_blank" rel="noopener">Cours (PDF)</a>
+        <a href="https://youtu.be/bQ-eS1zZCdw" target="_blank" rel="noopener">Primitives (vidéo)</a>
+        <a href="https://youtu.be/qHF5kiDFkW8" target="_blank" rel="noopener">Équations différentielles (vidéo)</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="integrales">
+      <header><h3>Calcul intégral</h3><span class="lvl">Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Définition</span><span class="m">∫<sub>a</sub><sup>b</sup> f(x) dx = F(b) − F(a), F primitive de f</span></li>
+            <li><span class="lbl">Linéarité, Chasles</span><span class="m">∫(αf + βg) = α∫f + β∫g &nbsp;·&nbsp; ∫<sub>a</sub><sup>c</sup> f = ∫<sub>a</sub><sup>b</sup> f + ∫<sub>b</sub><sup>c</sup> f</span></li>
+            <li><span class="lbl">Positivité, croissance</span><span class="m">a ≤ b et f ≥ 0 ⇒ ∫<sub>a</sub><sup>b</sup> f ≥ 0 &nbsp;·&nbsp; f ≤ g ⇒ ∫f ≤ ∫g</span></li>
+            <li><span class="lbl">Valeur moyenne</span><span class="m">μ = 1 / (b − a) · ∫<sub>a</sub><sup>b</sup> f(x) dx</span></li>
+            <li><span class="lbl">Aire entre deux courbes</span><span class="m">∫<sub>a</sub><sup>b</sup> (f − g) dx si f ≥ g sur [a ; b]</span></li>
+            <li><span class="lbl">Intégration par parties</span><span class="m">∫<sub>a</sub><sup>b</sup> u′v = [uv]<sub>a</sub><sup>b</sup> − ∫<sub>a</sub><sup>b</sup> uv′</span></li>
+          </ul>
+          <pre>Exemple : ∫₀¹ x·eˣ dx   avec u′ = eˣ, v = x
+  = [x·eˣ]₀¹ − ∫₀¹ eˣ dx = e − (e − 1) = 1</pre>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Intégration par parties : choisir v pour que v′ soit plus simple que v (v = x, v = ln x).</li>
+            <li>Une aire se compte en unités d'aire, et seulement avec une fonction positive (sinon séparer les intervalles).</li>
+            <li>Pour encadrer une intégrale, encadrer d'abord la fonction puis intégrer l'inégalité.</li>
+            <li>Une suite d'intégrales Iₙ se traite souvent par intégration par parties, pour obtenir une relation entre Iₙ et Iₙ₊₁.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20IntegT1.pdf" target="_blank" rel="noopener">Chapitre 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20IntegT2.pdf" target="_blank" rel="noopener">Chapitre 2 (PDF)</a>
+        <a href="https://youtu.be/pFKzXZrMVxs" target="_blank" rel="noopener">Cours (vidéo)</a>
+        <a href="https://youtu.be/uNIpYeaNfsg" target="_blank" rel="noopener">Méthode : par parties</a>
+      </p>
+    </article>
+  </section>
+
+  <!-- ===================== GÉOMÉTRIE ===================== -->
+  <section class="group">
+    <h2>Géométrie</h2>
+    <p>Le plan (Première) puis l'espace (Terminale) : le produit scalaire est l'outil commun.</p>
+
+    <article class="fiche" id="plan">
+      <header><h3>Produit scalaire et géométrie repérée dans le plan</h3><span class="lvl">Première</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Produit scalaire</span><span class="m"><b>u</b>·<b>v</b> = ‖<b>u</b>‖·‖<b>v</b>‖·cos θ = xx′ + yy′</span></li>
+            <li><span class="lbl">Orthogonalité</span><span class="m"><b>u</b> ⊥ <b>v</b> ⇔ <b>u</b>·<b>v</b> = 0</span></li>
+            <li><span class="lbl">Norme, distance</span><span class="m">‖<b>u</b>‖ = √(x² + y²) &nbsp;·&nbsp; AB = √((x<sub>B</sub> − x<sub>A</sub>)² + (y<sub>B</sub> − y<sub>A</sub>)²)</span></li>
+            <li><span class="lbl">Al-Kashi</span><span class="m">BC² = AB² + AC² − 2·AB·AC·cos(Â)</span></li>
+            <li><span class="lbl">Droite</span><span class="m">ax + by + c = 0, vecteur normal (a ; b), vecteur directeur (−b ; a)</span></li>
+            <li><span class="lbl">Cercle</span><span class="m">(x − a)² + (y − b)² = r²</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Pour prouver une orthogonalité : calculer le produit scalaire avec les coordonnées.</li>
+            <li>L'ensemble des points M tels que MA·MB = 0 est le cercle de diamètre [AB].</li>
+            <li>Un vecteur normal donne directement l'équation cartésienne de la droite.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/19Prodscal1M.pdf" target="_blank" rel="noopener">Produit scalaire 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/19Prodscal2M.pdf" target="_blank" rel="noopener">Produit scalaire 2 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/19RepM.pdf" target="_blank" rel="noopener">Géométrie repérée (PDF)</a>
+        <a href="https://youtu.be/dII7myZuLvo" target="_blank" rel="noopener">Produit scalaire (vidéo)</a>
+        <a href="https://youtu.be/EehP4SFpo5c" target="_blank" rel="noopener">Géométrie repérée (vidéo)</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="espace">
+      <header><h3>Géométrie dans l'espace</h3><span class="lvl">Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Coplanarité, base</span><span class="m">trois vecteurs non coplanaires forment une base de l'espace</span></li>
+            <li><span class="lbl">Produit scalaire</span><span class="m"><b>u</b>·<b>v</b> = xx′ + yy′ + zz′ &nbsp;·&nbsp; ‖<b>u</b>‖ = √(x² + y² + z²)</span></li>
+            <li><span class="lbl">Droite (A, <b>u</b>)</span><span class="m">x = x<sub>A</sub> + t·a &nbsp;·&nbsp; y = y<sub>A</sub> + t·b &nbsp;·&nbsp; z = z<sub>A</sub> + t·c &nbsp;(t ∈ ℝ)</span></li>
+            <li><span class="lbl">Plan, vecteur normal</span><span class="m"><b>n</b>(a ; b ; c) normal au plan ⇒ ax + by + cz + d = 0</span></li>
+            <li><span class="lbl">Parallélisme, orthogonalité</span><span class="m">plans parallèles ⇔ normaux colinéaires &nbsp;·&nbsp; droites orthogonales ⇔ vecteurs directeurs orthogonaux</span></li>
+            <li><span class="lbl">Projeté orthogonal H de M sur un plan</span><span class="m">le point du plan le plus proche de M : distance = MH</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Intersection droite et plan : remplacer x, y, z de la droite dans l'équation du plan, puis résoudre en t.</li>
+            <li>Équation d'un plan : trouver un vecteur normal (deux produits scalaires nuls avec deux vecteurs du plan), puis calculer d avec un point.</li>
+            <li>Pour la distance d'un point à un plan : projeté orthogonal H, puis longueur MH.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20Esp1.pdf" target="_blank" rel="noopener">Vecteurs, droites, plans (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20Esp2.pdf" target="_blank" rel="noopener">Orthogonalité (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20Esp3.pdf" target="_blank" rel="noopener">Paramétrique et cartésienne (PDF)</a>
+        <a href="https://youtu.be/pMQBaCqLPsQ" target="_blank" rel="noopener">Orthogonalité (vidéo)</a>
+        <a href="https://youtu.be/naOM6YG6DJc" target="_blank" rel="noopener">Équations (vidéo)</a>
+      </p>
+    </article>
+  </section>
+
+  <!-- ===================== DÉNOMBREMENT ET PROBAS ===================== -->
+  <section class="group">
+    <h2>Dénombrement et probabilités</h2>
+    <p>Compter, puis calculer des probabilités : la suite logique, et un terrain très utilisé en informatique.</p>
+
+    <article class="fiche" id="denombrement">
+      <header><h3>Combinatoire et dénombrement</h3><span class="lvl">Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">p-uplets (avec répétition)</span><span class="m">nᵖ</span></li>
+            <li><span class="lbl">Permutations</span><span class="m">n!</span></li>
+            <li><span class="lbl">Arrangements (ordre compte)</span><span class="m">n! / (n − p)!</span></li>
+            <li><span class="lbl">Combinaisons (ordre ne compte pas)</span><span class="m">C(n, p) = n! / (p!·(n − p)!)</span></li>
+            <li><span class="lbl">Propriétés</span><span class="m">C(n, p) = C(n, n − p) &nbsp;·&nbsp; C(n, p) + C(n, p+1) = C(n+1, p+1)</span></li>
+            <li><span class="lbl">Parties d'un ensemble</span><span class="m">un ensemble à n éléments a 2ⁿ parties : ΣC(n, k) = 2ⁿ</span></li>
+            <li><span class="lbl">Binôme de Newton</span><span class="m">(a + b)ⁿ = Σ<sub>k=0</sub><sup>n</sup> C(n, k)·aᵏ·bⁿ⁻ᵏ</span></li>
+          </ul>
+          <pre>from math import comb, factorial
+comb(10, 3)      # 120
+factorial(5)     # 120</pre>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Deux questions pour choisir la formule : l'ordre compte-t-il ? Peut-on répéter un élément ?</li>
+            <li>Principe multiplicatif : une succession de choix indépendants se multiplie.</li>
+            <li>Un « au moins un » se calcule souvent par le contraire (tout moins « aucun »).</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20Combi.pdf" target="_blank" rel="noopener">Cours (PDF)</a>
+        <a href="https://youtu.be/VVY4K-OT4FI" target="_blank" rel="noopener">Cours (vidéo)</a>
+        <a href="https://youtu.be/hWkIwXXEECc" target="_blank" rel="noopener">Arrangement, permutation ou combinaison ?</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="conditionnelles">
+      <header><h3>Probabilités conditionnelles et indépendance</h3><span class="lvl">Première</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Probabilité conditionnelle</span><span class="m">P<sub>A</sub>(B) = P(A ∩ B) / P(A)</span></li>
+            <li><span class="lbl">Probabilité d'une intersection</span><span class="m">P(A ∩ B) = P(A)·P<sub>A</sub>(B)</span></li>
+            <li><span class="lbl">Probabilités totales</span><span class="m">P(B) = P(A ∩ B) + P(<span class="ov">A</span> ∩ B)</span></li>
+            <li><span class="lbl">Indépendance</span><span class="m">A et B indépendants ⇔ P(A ∩ B) = P(A)·P(B)</span></li>
+            <li><span class="lbl">Arbre pondéré</span><span class="m">on multiplie le long d'une branche, on additionne les branches qui mènent à l'événement</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Dessiner l'arbre dès que l'énoncé parle de « sachant que ».</li>
+            <li>La somme des probabilités des branches issues d'un même nœud vaut 1.</li>
+            <li>Pour « inverser » une probabilité conditionnelle (de P<sub>A</sub>(B) vers P<sub>B</sub>(A)), repasser par P(A ∩ B).</li>
+            <li>Incompatibles et indépendants sont deux notions différentes.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/19CondPM.pdf" target="_blank" rel="noopener">Cours (PDF)</a>
+        <a href="https://youtu.be/5oBnmZVrOXE" target="_blank" rel="noopener">Cours (vidéo)</a>
+        <a href="https://youtu.be/7V7zRFislOQ" target="_blank" rel="noopener">Exercice de bac corrigé</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="binomiale">
+      <header><h3>Variables aléatoires, loi binomiale, concentration</h3><span class="lvl">Première · Terminale</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Espérance, variance</span><span class="m">E(X) = Σ xᵢpᵢ &nbsp;·&nbsp; V(X) = E(X²) − E(X)² &nbsp;·&nbsp; σ = √V(X)</span></li>
+            <li><span class="lbl">Transformation affine</span><span class="m">E(aX + b) = aE(X) + b &nbsp;·&nbsp; V(aX + b) = a²V(X)</span></li>
+            <li><span class="lbl">Somme</span><span class="m">E(X + Y) = E(X) + E(Y) &nbsp;·&nbsp; V(X + Y) = V(X) + V(Y) si X et Y indépendantes</span></li>
+            <li><span class="lbl">Loi binomiale B(n, p)</span><span class="m">P(X = k) = C(n, k)·pᵏ·(1 − p)ⁿ⁻ᵏ</span></li>
+            <li><span class="lbl">Paramètres de B(n, p)</span><span class="m">E(X) = np &nbsp;·&nbsp; V(X) = np(1 − p)</span></li>
+            <li><span class="lbl">Bienaymé-Tchebychev</span><span class="m">P(|X − E(X)| ≥ δ) ≤ V(X) / δ²</span></li>
+            <li><span class="lbl">Concentration de la moyenne Mₙ</span><span class="m">P(|Mₙ − μ| ≥ δ) ≤ σ² / (nδ²)</span></li>
+          </ul>
+          <pre>from math import comb
+def binom(n, k, p):
+    return comb(n, k) * p**k * (1 - p)**(n - k)</pre>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Reconnaître un schéma de Bernoulli : n épreuves identiques, indépendantes, deux issues.</li>
+            <li>« Au moins un succès » : P(X ≥ 1) = 1 − (1 − p)ⁿ.</li>
+            <li>Taille d'échantillon : l'inégalité de concentration donne un n qui garantit une précision δ.</li>
+            <li>La loi des grands nombres dit que la moyenne observée se rapproche de l'espérance quand n grandit.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/19vaPM.pdf" target="_blank" rel="noopener">Variables aléatoires (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20VA1.pdf" target="_blank" rel="noopener">Loi binomiale (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20VA2.pdf" target="_blank" rel="noopener">Somme de v.a. (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20GrandN.pdf" target="_blank" rel="noopener">Grands nombres (PDF)</a>
+        <a href="https://youtu.be/xMmfPUoBTtM" target="_blank" rel="noopener">Binomiale (vidéo)</a>
+        <a href="https://youtu.be/_ZzxgjAxrt4" target="_blank" rel="noopener">Concentration (vidéo)</a>
+      </p>
+    </article>
+  </section>
+
+  <!-- ===================== MATHS EXPERTES ===================== -->
+  <section class="group">
+    <h2>Extension : maths expertes</h2>
+    <p>Ces trois chapitres ne sont pas dans la spécialité seule. Si tu ne les as pas suivis, ils méritent une vraie lecture : complexes, matrices et arithmétique reviennent très vite en informatique et en sciences de l'ingénieur.</p>
+
+    <article class="fiche" id="complexes">
+      <header><h3>Nombres complexes</h3><span class="lvl">Expertes</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Forme algébrique</span><span class="m">z = a + ib, i² = −1</span></li>
+            <li><span class="lbl">Conjugué, module</span><span class="m"><span class="ov">z</span> = a − ib &nbsp;·&nbsp; z·<span class="ov">z</span> = |z|² = a² + b² &nbsp;·&nbsp; |z| = √(a² + b²)</span></li>
+            <li><span class="lbl">Forme trigonométrique</span><span class="m">z = |z|(cos θ + i sin θ) = |z|·e<sup>iθ</sup></span></li>
+            <li><span class="lbl">Produit, puissance</span><span class="m">|zz′| = |z|·|z′| &nbsp;·&nbsp; arg(zz′) = arg z + arg z′ [2π] &nbsp;·&nbsp; arg(zⁿ) = n·arg z &nbsp;·&nbsp; arg(<span class="ov">z</span>) = −arg z</span></li>
+            <li><span class="lbl">Moivre</span><span class="m">(cos θ + i sin θ)ⁿ = cos nθ + i sin nθ</span></li>
+            <li><span class="lbl">Euler</span><span class="m">cos θ = (e<sup>iθ</sup> + e<sup>−iθ</sup>) / 2 &nbsp;·&nbsp; sin θ = (e<sup>iθ</sup> − e<sup>−iθ</sup>) / 2i</span></li>
+            <li><span class="lbl">Second degré, Δ &lt; 0</span><span class="m">z = (−b ± i√(−Δ)) / 2a</span></li>
+            <li><span class="lbl">Racines n-ièmes de l'unité</span><span class="m">e<sup>2ikπ/n</sup>, k = 0, 1, …, n − 1</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Forme algébrique pour les sommes, forme exponentielle pour les produits et les puissances.</li>
+            <li>Pour diviser : multiplier haut et bas par le conjugué du dénominateur.</li>
+            <li>Les formules d'Euler servent à linéariser cosⁿ et sinⁿ avant d'intégrer.</li>
+            <li>Un argument se donne modulo 2π ; vérifier le quadrant avant de conclure.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20NC1.pdf" target="_blank" rel="noopener">Chapitre 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20NC2.pdf" target="_blank" rel="noopener">Chapitre 2 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20NC3.pdf" target="_blank" rel="noopener">Chapitre 3 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20NC4.pdf" target="_blank" rel="noopener">Chapitre 4 (PDF)</a>
+        <a href="https://youtu.be/ABo2m52oEYw" target="_blank" rel="noopener">Cours (vidéo)</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="matrices">
+      <header><h3>Matrices et graphes</h3><span class="lvl">Expertes</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Produit</span><span class="m">coefficient (i, j) de AB = Σ<sub>k</sub> aᵢₖ·bₖⱼ (ligne i de A par colonne j de B)</span></li>
+            <li><span class="lbl">Non commutatif</span><span class="m">AB ≠ BA en général</span></li>
+            <li><span class="lbl">Inverse</span><span class="m">A·A⁻¹ = A⁻¹·A = I</span></li>
+            <li><span class="lbl">Cas 2 × 2</span><span class="m">A = (a b ; c d) est inversible ⇔ ad − bc ≠ 0, et alors A⁻¹ = 1/(ad − bc) · (d −b ; −c a)</span></li>
+            <li><span class="lbl">Système AX = B</span><span class="m">si A est inversible, X = A⁻¹B</span></li>
+            <li><span class="lbl">Suite de matrices</span><span class="m">Xₙ₊₁ = A·Xₙ ⇒ Xₙ = Aⁿ·X₀</span></li>
+            <li><span class="lbl">Suite avec terme constant</span><span class="m">Xₙ₊₁ = A·Xₙ + B : l'état stable vérifie X = A·X + B, donc X = (I − A)⁻¹B si I − A est inversible</span></li>
+            <li><span class="lbl">Graphe, adjacence</span><span class="m">coefficient (i, j) de Aⁿ = nombre de chaînes de longueur n de i à j</span></li>
+            <li><span class="lbl">Graphe probabiliste</span><span class="m">πₙ₊₁ = πₙ·P ; état stable π = π·P, de somme 1</span></li>
+          </ul>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Vérifier les dimensions avant un produit : (m × n) par (n × p) donne (m × p).</li>
+            <li>La calculatrice ou NumPy (<code>numpy.linalg</code>) fait les puissances et les inverses ; l'important est de savoir poser le modèle.</li>
+            <li>Chaque ligne d'une matrice de transition somme à 1 (selon la convention du cours).</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20mat1.pdf" target="_blank" rel="noopener">Matrices 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20mat2.pdf" target="_blank" rel="noopener">Matrices 2 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20graphe1.pdf" target="_blank" rel="noopener">Graphes 1 (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20graphe2.pdf" target="_blank" rel="noopener">Graphes 2 (PDF)</a>
+        <a href="https://youtu.be/4QMzwWY6T7g" target="_blank" rel="noopener">Calculer un inverse</a>
+        <a href="https://youtu.be/vhmGn_x7UZ4" target="_blank" rel="noopener">Système avec matrices</a>
+      </p>
+    </article>
+
+    <article class="fiche" id="arithmetique">
+      <header><h3>Divisibilité, congruences, PGCD</h3><span class="lvl">Expertes</span></header>
+      <div class="cols">
+        <section>
+          <h4>À retenir</h4>
+          <ul class="f">
+            <li><span class="lbl">Division euclidienne</span><span class="m">a = bq + r avec 0 ≤ r &lt; b</span></li>
+            <li><span class="lbl">Congruence</span><span class="m">a ≡ b [n] ⇔ n divise a − b ⇔ même reste dans la division par n</span></li>
+            <li><span class="lbl">Compatibilité</span><span class="m">les congruences se somment, se multiplient et se mettent à la puissance</span></li>
+            <li><span class="lbl">Algorithme d'Euclide</span><span class="m">PGCD(a, b) = PGCD(b, r), r reste de a par b</span></li>
+            <li><span class="lbl">Identité de Bézout</span><span class="m">PGCD(a, b) = d ⇒ il existe u, v entiers avec au + bv = d</span></li>
+            <li><span class="lbl">Théorème de Bézout</span><span class="m">a et b premiers entre eux ⇔ il existe u, v entiers avec au + bv = 1</span></li>
+            <li><span class="lbl">Gauss</span><span class="m">a | bc et PGCD(a, b) = 1 ⇒ a | c</span></li>
+            <li><span class="lbl">Inverse modulo n</span><span class="m">a est inversible modulo n ⇔ PGCD(a, n) = 1</span></li>
+            <li><span class="lbl">Petit théorème de Fermat</span><span class="m">p premier, p ne divise pas a ⇒ a<sup>p−1</sup> ≡ 1 [p]</span></li>
+          </ul>
+          <pre>from math import gcd
+gcd(84, 30)        # 6
+pow(7, -1, 26)     # 15, car 7 × 15 = 105 = 4 × 26 + 1
+pow(3, 100, 17)    # 13 (puissance modulaire rapide)</pre>
+        </section>
+        <section>
+          <h4>Réflexes</h4>
+          <ul class="r">
+            <li>Pour un reste d'une grande puissance : chercher la période des restes, ou utiliser Fermat.</li>
+            <li>Pour prouver une divisibilité : disjonction de cas sur les restes modulo n.</li>
+            <li>Une équation ax + by = c n'a de solution entière que si PGCD(a, b) divise c.</li>
+            <li>Ces notions fondent le chiffrement affine et RSA, au programme de beaucoup de cours de sécurité informatique.</li>
+          </ul>
+        </section>
+      </div>
+      <p class="src"><span>Cours Monka</span>
+        <a href="https://www.maths-et-tiques.fr/telech/20ArithTE1.pdf" target="_blank" rel="noopener">Divisibilité, congruences (PDF)</a>
+        <a href="https://www.maths-et-tiques.fr/telech/20ArithTE2.pdf" target="_blank" rel="noopener">PGCD, nombres premiers (PDF)</a>
+        <a href="https://youtu.be/HxcyqNbdVUI" target="_blank" rel="noopener">Congruences en 1 min</a>
+        <a href="https://youtu.be/Pl4FaV5GZvc" target="_blank" rel="noopener">Inverse modulo n</a>
+      </p>
+    </article>
+  </section>
+
+    <section class="todo">
+      <h2>À ajouter ensuite</h2>
+      <p>Notions qu'un cycle ingénieur informatique demande souvent en plus. La liste vient de la plaquette 2020-21 de 3iL et de ce qui est courant dans ce type de formation : à confirmer avec le programme de ton école.</p>
+      <ul>
+        <li>Algèbre linéaire : espaces vectoriels, applications linéaires, déterminant, valeurs propres, diagonalisation.</li>
+        <li>Séries numériques, développements limités, intégrales généralisées.</li>
+        <li>Analyse de Fourier : séries de Fourier puis transformée de Fourier.</li>
+        <li>Probabilités et statistiques avancées : lois à densité, loi de Poisson, couples de variables, estimation, tests.</li>
+        <li>Analyse numérique : méthode de Newton, intégration numérique, interpolation.</li>
+        <li>Équations différentielles d'ordre 2 et transformée de Laplace.</li>
+        <li>Logique, graphes et complexité (notation O).</li>
+      </ul>
+    </section>
+
+    <p class="foot">Fiches de synthèse rédigées d'après le plan des cours de Yvan Monka (maths-et-tiques.fr), dont les cours, méthodes et exercices corrigés complets restent la référence. Les formules ont été comparées au formulaire de Terminale de Yvan Monka et à ses PDF de cours sur le second degré, le produit scalaire, la géométrie repérée, les probabilités conditionnelles, la trigonométrie, les complexes, les matrices, les graphes et l'arithmétique : aucune différence relevée. Les autres PDF de Première et de Terminale n'ont pas été relus un par un, et quelques résultats classiques viennent de moi (équations trigonométriques générales, formules d'addition et de duplication, propriétés de la variance). Vérifie toujours dans ton cours avant un contrôle.</p>
+  </main>
+</div>
+</body>
+</html>

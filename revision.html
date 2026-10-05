@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartes de révision – Maths pour ingénieur</title>
+<meta name="description" content="Cartes de révision pour retenir les formules de maths : une question, une réponse, et ta progression enregistrée dans le navigateur.">
+<script>try{var t=JSON.parse(localStorage.getItem('mr:theme'));if(t){document.documentElement.setAttribute('data-theme',t)}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/common.js" defer></script>
+<script src="js/cards-data.js" defer></script>
+<script src="js/flashcards.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html">Maths <b>pour ingénieur</b></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="index.html">Fiches</a>
+      <a href="revision.html" aria-current="page">Cartes</a>
+    </nav>
+    <button type="button" class="theme-btn" id="theme">Mode sombre</button>
+  </div>
+</header>
+
+<main class="fc" id="contenu">
+  <p class="eyebrow">Cartes de révision</p>
+  <h1>Une carte, une formule</h1>
+  <p class="lead">Lis la question, essaie de répondre de tête, puis affiche la réponse. Les cartes que tu rates reviennent en premier. Ta progression reste dans ce navigateur.</p>
+
+  <div class="fc-ctl">
+    <div class="fld">
+      <label for="chap">Chapitre</label>
+      <select id="chap"></select>
+    </div>
+    <label class="chk" for="only-due"><input type="checkbox" id="only-due"> Seulement les cartes à revoir</label>
+    <button type="button" class="link-btn" id="reset">Réinitialiser ma progression</button>
+  </div>
+
+  <div class="stats" id="stats" aria-label="État des cartes"></div>
+  <div id="stage"></div>
+</main>
+
+<p class="site-foot">Cartes rédigées d'après le plan des cours de spécialité de Yvan Monka (<a href="https://www.maths-et-tiques.fr/" target="_blank" rel="noopener">maths-et-tiques.fr</a>).</p>
+</body>
+</html>
